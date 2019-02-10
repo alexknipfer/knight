@@ -23,9 +23,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "electron-dev": "concurrently \"BROWSER=none npm start\" \"wait-on http://localhost:3000 && electron .\"",
-    "electron-pack": "electron-builder --dir",
-    "electron-dist": "electron-builder build -m",
+    "electron-dev": "cross-env NODE_ENV=development concurrently \"BROWSER=none npm start\" \"wait-on http://localhost:3000 && electron .\"",
+    "electron-pack": "cross-env NODE_ENV=development electron-builder --dir",
+    "electron-dist": "cross-env NODE_ENV=development electron-builder build -m",
     "prettier": "prettier --write \"**/*.{tsx,ts,css,md,js,vue,html,json}\""
   },
   "dependencies": {
@@ -43,6 +43,7 @@
     "@types/react-dom": "16.8.0",
     "@types/styled-components": "^4.1.8",
     "concurrently": "^4.1.0",
+    "cross-env": "^5.2.0",
     "electron": "^4.0.4",
     "electron-builder": "^20.38.5",
     "prettier": "^1.16.4",

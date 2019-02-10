@@ -4,10 +4,11 @@ import { createGlobalStyle } from 'styled-components/macro'
 import Welcome from '../../views/Welcome/Welcome'
 
 const GlobalStyle = createGlobalStyle`
-  html, body, main, #root {
+  html, body, #root {
     margin: 0;
     padding: 0;
     height: 100%;
+    background: #0f373a;
     width: 100%;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
