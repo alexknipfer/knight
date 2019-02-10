@@ -1,8 +1,11 @@
 {
   "name": "knight",
+  "description": "The next best text editor.",
+  "author": "Alex Knipfer",
   "version": "0.1.0",
   "private": true,
   "main": "public/electron.js",
+  "homepage": ".",
   "dependencies": {
     "electron-is-dev": "^1.0.1",
     "react": "^16.8.1",
@@ -20,14 +23,11 @@
     "electron-dist": "electron-builder build -m"
   },
   "build": {
-    "appId": "com.knight.knight-alpha.1",
-    "files": [
-      "build/**/*",
-      "node_modules/**/*"
-    ],
+    "appId": "com.knipferdev.knighteditor",
     "directories": {
       "buildResources": "assets"
     },
+    "extends": null,
     "buildDependenciesFromSource": true,
     "nodeGypRebuild": false,
     "npmRebuild": false
