@@ -1,33 +1,50 @@
-const electron = require("electron");
-const app = electron.app;
-const BrowserWindow = electron.BrowserWindow;
+const { app, BrowserWindow } = require('electron')
+const { format } = require('url')
+const { join } = require('path')
 
-const path = require("path");
-const url = require("url");
-const isDev = require("electron-is-dev");
+let mainWindow
+const isDev = process.env.NODE_ENV === 'development'
 
-let mainWindow;
+const gotTheLock = app.requestSingleInstanceLock()
 
-function createWindow() {
-  mainWindow = new BrowserWindow({ width: 900, height: 680 });
-  mainWindow.loadURL(
-    isDev
-      ? "http://localhost:3000"
-      : `file://${path.join(__dirname, "../build/index.html")}`
-  );
-  mainWindow.on("closed", () => (mainWindow = null));
+if (!gotTheLock) {
+  app.quit()
+} else {
+  app.on('second-instance', () => {
+    if (mainWindow) {
+      if (mainWindow.isMinimized()) mainWindow.restore()
+      mainWindow.focus()
+    }
+  })
 }
 
-app.on("ready", createWindow);
+function createWindow() {
+  mainWindow = new BrowserWindow({ width: 800, height: 600 })
 
-app.on("window-all-closed", () => {
-  if (process.platform !== "darwin") {
-    app.quit();
+  const startUrl = isDev
+    ? 'http://localhost:3000'
+    : format({
+        pathname: join(__dirname, '/../build/index.html'),
+        protocol: 'file:',
+        slashes: true
+      })
+  mainWindow.loadURL(startUrl)
+
+  mainWindow.on('closed', function() {
+    mainWindow = null
+  })
+}
+
+app.on('ready', createWindow)
+
+app.on('window-all-closed', function() {
+  if (process.platform !== 'darwin') {
+    app.quit()
   }
-});
+})
 
-app.on("activate", () => {
+app.on('activate', function() {
   if (mainWindow === null) {
-    createWindow();
+    createWindow()
   }
-});
+})
