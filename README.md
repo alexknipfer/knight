@@ -1,3 +1,3 @@
 # Knight
 
-- The next best text editor
+![alt text](https://alexknipferprofilesite.blob.core.windows.net/images/OrbitBanner.png)
