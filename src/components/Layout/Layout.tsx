@@ -1,5 +1,7 @@
 import * as React from 'react'
 import { TitleBar } from '../TitleBar/TitleBar'
+import { SidePanel } from '../SidePanel/SidePanel'
+import { Workspace } from './style'
 
 interface LayoutProps {
   children: React.ReactNode
@@ -8,6 +10,9 @@ interface LayoutProps {
 export const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => (
   <>
     <TitleBar />
-    {children}
+    <Workspace>
+      <SidePanel />
+      {children}
+    </Workspace>
   </>
 )
