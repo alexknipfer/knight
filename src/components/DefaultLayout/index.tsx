@@ -11,12 +11,12 @@ interface DefaultLayoutProps {
 
 export function DefaultLayout({ children }: DefaultLayoutProps) {
   return (
-  <Fragment>
-    <TitleBar />
-    <Workspace>
-      <SidePanel />
-      {children}
-    </Workspace>
-  </Fragment>
+    <Fragment>
+      <TitleBar />
+      <Workspace>
+        <SidePanel />
+        {children}
+      </Workspace>
+    </Fragment>
   )
 }
