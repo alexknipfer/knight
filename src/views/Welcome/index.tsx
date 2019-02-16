@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { DefaultLayout } from '../../layouts/DefaultLayout'
+import { DefaultLayout } from '../../components/DefaultLayout'
 
 import { Text } from './style'
 
