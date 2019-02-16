@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 import { createGlobalStyle } from 'styled-components/macro'
 
 import Welcome from '../../views/Welcome/Welcome'
+import { Layout } from '../Layout/Layout'
 
 const GlobalStyle = createGlobalStyle`
   html, body, #root {
@@ -18,7 +19,9 @@ function App() {
   return (
     <Fragment>
       <GlobalStyle />
-      <Welcome />
+      <Layout>
+        <Welcome />
+      </Layout>
     </Fragment>
   )
 }
