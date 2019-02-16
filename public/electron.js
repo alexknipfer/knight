@@ -9,9 +9,9 @@ let mainWindow
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 900,
-    height: 680,
-    titlebarStyle: 'hiddenInset'
+    width: 1200,
+    height: 800,
+    titleBarStyle: 'hidden'
   })
   mainWindow.loadURL(
     isDev
