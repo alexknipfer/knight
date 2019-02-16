@@ -1,6 +1,7 @@
 const electron = require('electron')
 const app = electron.app
 const BrowserWindow = electron.BrowserWindow
+const Menu = electron.Menu
 
 const path = require('path')
 const isDev = require('electron-is-dev')
@@ -11,6 +12,7 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     width: 1200,
     height: 800,
+    title: 'Orbit',
     titleBarStyle: 'hidden'
   })
   mainWindow.loadURL(
@@ -21,7 +23,11 @@ function createWindow() {
   mainWindow.on('closed', () => (mainWindow = null))
 }
 
-app.on('ready', createWindow)
+app.on('ready', () => {
+  createWindow()
+  const menu = Menu.buildFromTemplate(buildMenuTemplate())
+  Menu.setApplicationMenu(menu)
+})
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
@@ -34,3 +40,17 @@ app.on('activate', () => {
     createWindow()
   }
 })
+
+function buildMenuTemplate() {
+  return [
+    {
+      label: 'Orbit',
+      submenu: [
+        {
+          label: 'Quit Orbit',
+          click: () => app.quit()
+        }
+      ]
+    }
+  ]
+}
