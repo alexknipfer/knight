@@ -51,6 +51,10 @@ function buildMenuTemplate() {
         {
           label: 'Quit Orbit',
           click: () => app.quit()
+        },
+        {
+          label: 'Open Dev Tools',
+          click: () => mainWindow.webContents.openDevTools()
         }
       ]
     }
